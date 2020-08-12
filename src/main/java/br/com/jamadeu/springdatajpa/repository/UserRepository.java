@@ -18,6 +18,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     List<User> findByEmailEndingWith(String domain);
 
-    @Query("from User where email like %domain")
+    @Query("from User where email like concat('%', ?1)")
     List<User> findByDomain(String domain);
 }
